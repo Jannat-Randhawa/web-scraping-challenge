@@ -45,16 +45,19 @@ def scrape():
     html = browser.html
     soup = BeautifulSoup(html, "html.parser")
     spans=soup.find_all('span')
-    weather = []
     for span in spans:
-        if 'InSight sol ' in span.text: 
-            weather.append(span.text)
-    weather
-    weather[0]
+        if 'InSight sol ' in span.text:
+        print(span.text)
+        mars_weather = span.text
+        break
+    mars_weather
 
     #Mars Facts 
     table_facts = pd.read_html("https://space-facts.com/mars/")
-    table_facts[0]
+    mars_df = table_facts[0]
+    mars_df_new.columns = ["Category", "Measurements"]
+    mars_facts = mars_df_new.set_index("Category")
+    mars_facts
 
     #Mar Hemisphere 
     import time
@@ -78,9 +81,12 @@ def scrape():
 
     hemisphere_image_urls
 
+mars_dict = {"news_title": news_title, "news_text": news_p, "featured_image": featured_image_url,
+"mars_weather": mars_weather, "mars_facts":mars_facts, "hemispheres_images": hemisphere_image_urls }
 
+browser.quit()
 
-
+return mars_dict
 
 
 
