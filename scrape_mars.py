@@ -4,7 +4,6 @@ from bs4 import BeautifulSoup
 from splinter import Browser 
 import requests 
 import os
-import time
 
 #Site Navigation
 def init_browser():
@@ -42,9 +41,9 @@ def scrape():
 
     browser.visit(twitter_url)
     time.sleep(3)
-    html = browser.html
-    soup = BeautifulSoup(html, "html.parser")
-    spans=soup.find_all('span')
+    html1 = browser.html
+    soup1 = BeautifulSoup(html1, "html.parser")
+    spans=soup1.find_all('span')
     for span in spans:
         if 'InSight sol ' in span.text:
             print(span.text)
@@ -65,9 +64,9 @@ def scrape():
     browser.visit(hemisphere_url)
     time.sleep(3)
     hemispheres_main_url = 'https://astrogeology.usgs.gov'
-    html = browser.html
-    soup = BeautifulSoup(html, "html.parser")
-    div_items = soup.find_all('div', class_='item')
+    html2 = browser.html
+    soup2 = BeautifulSoup(html2, "html.parser")
+    div_items = soup2.find_all('div', class_='item')
     hemisphere_image_urls = []
     hemispheres_main_url = 'https://astrogeology.usgs.gov'
     for item in div_items: 
@@ -75,14 +74,15 @@ def scrape():
         end_points = item.find('a', class_='itemLink product-item')['href']
         browser.visit(hemispheres_main_url + end_points)
         image_html = browser.html
-        soup = BeautifulSoup( image_html, 'html.parser')
-        image_url = hemispheres_main_url + soup.find('img', class_='wide-image')['src']
+        soup3 = BeautifulSoup( image_html, 'html.parser')
+        image_url = hemispheres_main_url + soup3.find('img', class_='wide-image')['src']
         hemisphere_image_urls.append({"Title": title, "Image_URL": image_url})
 
     hemisphere_image_urls
 
     mars_dict = {"news_title": news_title, "news_text": news_p, "featured_image": featured_image_url,
     "mars_weather": mars_weather, "mars_facts":mars_facts, "hemispheres_images": hemisphere_image_urls}
+    
     return mars_dict
 
     browser.quit()

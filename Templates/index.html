@@ -21,12 +21,37 @@
         </div>
         </div>
     </div>
-<!-- Latest News-->
+
+    <!-- Latest News-->
     <div class="container">
         <div class="row">
-
+            <div class = "col-sm-12">
+                <h3 style="color: darkgray;">{{ mars_dict.news_title }}</h3>
+                <hr>
+                <p>{{ mars_dict.news_title }}</p>
+            </div>
         </div>
     </div>
+    <!--Latest Images-->
+    <div class="container">
+        <div class="row">
+            <div class = "col-sm-8">
+                <div class="box">
+                <h3 style="color: darkgray;"> Featured Images</h3>
+                <hr>
+                <img src="{{mars_dict.featured_image}}", alt="image">
+            </div>
+            </div>
+            <!-- Current Weather-->
+            <div class="col-sm-6 col-md-8">
+                <div class="box">
+                <h5 style="color: dimgray;"> Current Weather</h5>
+                <p>{{ mars_dict.mars_weather }}</p>
+            </div>
+            </div>
+        </div>
+    </div>
+
 
 </body>
 
