@@ -4,6 +4,7 @@ from bs4 import BeautifulSoup
 from splinter import Browser 
 import requests 
 import os
+import time 
 
 #Site Navigation
 def init_browser():
@@ -16,7 +17,7 @@ def scrape():
     #NASA Mar News 
     news_url = "http://mars.nasa.gov/news/"
     browser.visit(news_url)
-    time.sleep(3)
+    # time.sleep(7)
     html = browser.html
     soup = BeautifulSoup(html, "html.parser")
     news_title = soup.find("div", class_='content_title').text
@@ -28,7 +29,7 @@ def scrape():
     main_url = "https://www.jpl.nasa.gov"
     image_url = "https://www.jpl.nasa.gov/spaceimages/?search=&category=Mars"
     browser.visit(image_url)
-    time.sleep(5)
+    # time.sleep(7)
     html = browser.html
     soup = BeautifulSoup(html, "html.parser")
     image_results = soup.find("ul", class_="articles")
@@ -38,9 +39,8 @@ def scrape():
 
     #Mar Weather 
     twitter_url = "https://twitter.com/marswxreport?lang=en"
-
     browser.visit(twitter_url)
-    time.sleep(3)
+    time.sleep(7)
     html1 = browser.html
     soup1 = BeautifulSoup(html1, "html.parser")
     spans=soup1.find_all('span')
@@ -62,7 +62,7 @@ def scrape():
     import time
     hemisphere_url = "https://astrogeology.usgs.gov/search/results?q=hemisphere+enhanced&k1=target&v1=Mars"
     browser.visit(hemisphere_url)
-    time.sleep(3)
+    # time.sleep(7)
     hemispheres_main_url = 'https://astrogeology.usgs.gov'
     html2 = browser.html
     soup2 = BeautifulSoup(html2, "html.parser")
