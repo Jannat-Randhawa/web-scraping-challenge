@@ -9,7 +9,7 @@ import time
 #Site Navigation
 def init_browser():
     executable_path = {'executable_path': '/usr/local/bin/chromedriver'}
-    browser = Browser('chrome', **executable_path, headless=False)
+    return Browser('chrome', **executable_path, headless=False)
 
 def scrape(): 
     browser = init_browser()
@@ -47,9 +47,9 @@ def scrape():
     spans=soup.find_all('span')
     for span in spans:
         if 'InSight sol ' in span.text:
-        print(span.text)
-        mars_weather = span.text
-        break
+            print(span.text)
+            mars_weather = span.text
+            break
     mars_weather
 
     #Mars Facts 
@@ -81,16 +81,8 @@ def scrape():
 
     hemisphere_image_urls
 
-mars_dict = {"news_title": news_title, "news_text": news_p, "featured_image": featured_image_url,
-"mars_weather": mars_weather, "mars_facts":mars_facts, "hemispheres_images": hemisphere_image_urls }
+    mars_dict = {"news_title": news_title, "news_text": news_p, "featured_image": featured_image_url,
+    "mars_weather": mars_weather, "mars_facts":mars_facts, "hemispheres_images": hemisphere_image_urls}
+    return mars_dict
 
-browser.quit()
-
-return mars_dict
-
-
-
-
-
-
-
+    browser.quit()

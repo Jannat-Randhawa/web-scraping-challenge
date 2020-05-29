@@ -10,7 +10,7 @@ mongo = PyMongo(app, uri="mongodb://localhost:27017/mission_to_mars")
 @app.route("/")
 def index(): 
     
-    mars_dict = mongo.db.mars_info.find_one()
+    mars_dict = mongo.db.mars_dict.find_one()
 
     return render_template("index.html", mars_dict = mars_dict)
 
