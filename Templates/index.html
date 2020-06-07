@@ -35,19 +35,42 @@
     <!--Latest Images-->
     <div class="container">
         <div class="row">
-            <div class = "col-sm-8">
+            <div class = "col-md-8">
                 <div class="box">
                 <h3 style="color: darkgray;"> Featured Images</h3>
                 <hr>
-                <img src="{{mars_dict.featured_image}}", alt="image">
+                <img class = "img-responsive" src="{{mars_dict.featured_image}}", alt="image">
             </div>
             </div>
             <!-- Current Weather-->
-            <div class="col-sm-6 col-md-8">
+            <div class="col-lg-4">
                 <div class="box">
                 <h5 style="color: dimgray;"> Current Weather</h5>
                 <p>{{ mars_dict.mars_weather }}</p>
             </div>
+            </div>
+            <!-- Mars Facts-->
+            <div class = "row">
+            <div class ="col-lg-3">
+                <div class="box">
+                    <h5> Mars facts</h5>
+                    <p>{{ mars_dict.mars_facts| safe }}</p> 
+                </div>
+            </div>
+
+            <!-- Hemispheres URL -->
+            <div class = "row">
+                {% for hemisphere in mars_dict.hemisphere_images%}
+          <div class="col-lg-6">
+            <div class="card" style="width: 20rem;">
+                <div class="card-body">
+                  <h4 class="card-title">{{hemisphere.Title}}</h4>
+                  <img class="img-responsive" src = {{hemisphere.Image_URL}}>
+                </div>
+              </div>
+          </div>
+          {% endfor %}
+
             </div>
         </div>
     </div>

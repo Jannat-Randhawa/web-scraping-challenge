@@ -1,3 +1,4 @@
 {
-    "python.pythonPath": "/Applications/Xcode.app/Contents/Developer/usr/bin/python3"
+    "python.pythonPath": "/Applications/Xcode.app/Contents/Developer/usr/bin/python3",
+    "liveServer.settings.port": 5501
 }
