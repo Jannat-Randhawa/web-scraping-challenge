@@ -45,7 +45,8 @@
             <!-- Current Weather-->
             <div class="col-lg-4">
                 <div class="box">
-                <h5 style="color: dimgray;"> Current Weather</h5>
+                <h4 style="color: darkgray;"> Current Weather</h4>
+                <hr>
                 <p>{{ mars_dict.mars_weather }}</p>
             </div>
             </div>
@@ -57,11 +58,15 @@
                     <p>{{ mars_dict.mars_facts| safe }}</p> 
                 </div>
             </div>
-
+        </div>
+        <br>
             <!-- Hemispheres URL -->
+            <div class="container">
             <div class = "row">
+                <h3> Hemisphere Images</h3>
+              <hr>
                 {% for hemisphere in mars_dict.hemisphere_images%}
-          <div class="col-lg-6">
+                <div class="col-lg-6">
             <div class="card" style="width: 20rem;">
                 <div class="card-body">
                   <h4 class="card-title">{{hemisphere.Title}}</h4>
@@ -72,7 +77,6 @@
           {% endfor %}
 
             </div>
-        </div>
     </div>
 
 
