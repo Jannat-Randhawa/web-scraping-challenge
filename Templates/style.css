@@ -1,0 +1,10 @@
+img {
+    max-width: 60px;
+    align-self: auto;
+}
+
+.jumbotron {
+    background-image: url('https://i.pinimg.com/564x/34/94/b0/3494b0c4f7fba76812c97351a1a65345.jpg');
+    background-size: cover;
+    height: 100%;
+}
