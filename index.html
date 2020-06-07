@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Mission to Mars</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="style.css">
+
+</head>
+
+<body>
+<!--Jumbotron-->
+    <div class="jumbotron jumbotron-fluid">
+        <div class="container">
+            <div class="row">
+            <div class = "col-sm-12">
+          <h1 class="display-4">Mission to Mars</h1>
+          <a href="/scrape" class="btn btn-primary btn-lg active" role="button" aria-pressed="true"> Mars Data Scraper</a>
+        </div>
+        </div>
+        </div>
+    </div>
+
+    <!-- Latest News-->
+    <div class="container">
+        <div class="row">
+            <div class = "col-sm-12">
+                <h3 style="color: dimgray;">{{ mars_dict.news_title }}</h3>
+                <hr>
+                <p>{{ mars_dict.news_content }}</p>
+            </div>
+        </div>
+    </div>
+    <!--Latest Images-->
+    <div class="container">
+        <div class="row">
+            <div class = "col-md-8">
+                <div class="box">
+                <h3 style="color: dimgray;"> Featured Images</h3>
+                <hr>
+                <img class = "img-responsive" src="{{mars_dict.featured_image}}", alt="image">
+            </div>
+            </div>
+            <!-- Current Weather-->
+            <div class="col-lg-4">
+                <div class="box">
+                <h4 style="color: dimgray;"> Current Weather</h4>
+                <hr>
+                <p>{{ mars_dict.mars_weather }}</p>
+            </div>
+            </div>
+            <!-- Mars Facts-->
+            <div class = "row">
+            <div class ="col-lg-3">
+                <div class="box">
+                    <h5 style="color: dimgray;"> Mars facts</h5>
+                    <p>{{ mars_dict.mars_facts| safe }}</p> 
+                </div>
+            </div>
+        </div>
+        <br>
+            <!-- Hemispheres URL -->
+            <div class="container">
+            <div class = "row">
+                <h5> Hemisphere Images</h5>
+              <hr>
+                {% for hemisphere in mars_dict.hemisphere_images%}
+                <div class="col-lg-6">
+            <div class="card" style="width: 20rem;">
+                <div class="card-body">
+                  <h4 class="card-title">{{hemisphere.Title}}</h4>
+                  <img class="img-responsive" src = {{hemisphere.Image_URL}}>
+                </div>
+              </div>
+          </div>
+          {% endfor %}
+
+            </div>
+    </div>
+
+
+</body>
+
+<!-- JS, Popper.js, and jQuery -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+</html>
